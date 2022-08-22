@@ -2,7 +2,7 @@
   <h1>{{title}}</h1>
   <p>Welcome...</p>
   <div v-if='showModal'>
-    <Modal theme='salse' @close='toggleModal'>
+    <Modal theme='sale' @close='toggleModal'>
       <template v-slot:links>
         <a href="#">Sign up now</a>
         <a href="#">More info</a>
@@ -12,6 +12,17 @@
     </Modal>
   </div>
   <button @click.alt="toggleModal">open modal (alt)</button>
+<br />
+<br />
+  <div v-if='showModalTwo'>
+    <Modal @close='toggleModalTwo'>
+      <template v-slot:img>
+        <img src="./assets/logo.png">
+      </template>
+    </Modal>
+  </div>
+  <button @click="toggleModalTwo">open modal two</button>
+
 </template>
 
 
@@ -25,14 +36,16 @@ export default {
   data() {
     return {
       title: 'My First Vue App YAS',
-      header: 'this is the header',
-      text: 'Grab your ninja swag',
-      showModal: false
+      showModal: false,
+      showModalTwo: false,
     }
   },
   methods: {
     toggleModal() {
       this.showModal = !this.showModal
+    },
+    toggleModalTwo() {
+      this.showModalTwo = !this.showModalTwo
     }
   }
 }
